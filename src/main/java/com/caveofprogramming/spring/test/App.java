@@ -10,8 +10,9 @@ public class App {
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 
         Logger logger = (Logger) context.getBean("logger");
+
         logger.writeFile("This is a file");
-        logger.writeConsole("This is in the console console");
+        logger.writeConsole("This is in the console");
 
 		((ClassPathXmlApplicationContext)context).close();
 	}

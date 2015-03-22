@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+    xmlns:context="http://www.springframework.org/schema/context">
+     <!--can have a default autowire in the entire xml scope, can also specify the candidates available for autowiring-->
 
+        <!--&lt;!&ndash;Can autowire byType, byName, constructor&ndash;&gt;-->
+	<!--<bean id="logger" class="com.caveofprogramming.spring.test.Logger" >-->
+	<!--</bean>-->
 
+    <!--&lt;!&ndash;primary property removes ambiguity&ndash;&gt;-->
+	<!--<bean id="consoleWriter" class="com.caveofprogramming.spring.test.ConsoleWriter" >-->
+        <!--<qualifier value="toConsole"></qualifier>-->
+	<!--</bean>-->
 
-	<bean id="logger" class="com.caveofprogramming.spring.test.Logger" autowire="byType">
+    <!--<bean id="somethingsilly" class="com.caveofprogramming.spring.test.ConsoleWriter">-->
+    <!--</bean>-->
 
-	</bean>
+    <!--&lt;!&ndash;<bean id="panda" class="com.caveofprogramming.spring.test.ConsoleWriter">&ndash;&gt;-->
+    <!--&lt;!&ndash;</bean>&ndash;&gt;-->
 
+	<!--<bean id="fileWriter" class="com.caveofprogramming.spring.test.FileWriter">-->
+	<!--</bean>-->
 
-	<bean id="consolewriter" class="com.caveofprogramming.spring.test.ConsoleWriter">
-	</bean>
+    <!--autowire-candidate property removes ambiguity-->
+    <!--<bean id="apple" class="com.caveofprogramming.spring.test.FileWriter" autowire-candidate="false">-->
+    <!--</bean>-->
 
-	<bean id="filewriter" class="com.caveofprogramming.spring.test.FileWriter">
-	</bean>
-	
+    <context:annotation-config></context:annotation-config>
+    <context:component-scan base-package="com.caveofprogramming.spring.test"></context:component-scan>
+
 </beans>
